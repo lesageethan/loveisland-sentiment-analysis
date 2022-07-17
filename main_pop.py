@@ -36,16 +36,18 @@ def find_proportion(contestant, tweets): #Find proportion of tweets containing t
             count+=1
     return round(count/len(tweets), 4)*100
 
-contestants = ["Luca", "Davide", "Adam", "Dami", "Billy", "Andrew", "Deji", #List of contestants
-"Gemma", "Paige", "Ekin", "Indiyah", "Danica", "Tasha", "Summer"]
+def main(n): #Loop through contestants to tally up and find proportions for each islander
+    contestants = ["Luca", "Davide", "Adam", "Dami", "Billy", "Andrew", "Deji", #List of contestants
+    "Gemma", "Paige", "Ekin", "Indiyah", "Danica", "Tasha", "Summer"]
 
-tweets = get_tweets(10000)
-pos_tweets = find_op(tweets)
-neg_tweets = find_on(tweets)
+    tweets = get_tweets(n)
+    pos_tweets = find_op(tweets)
+    neg_tweets = find_on(tweets)
 
-print("Islander, % Positive Tweets, % Negative Tweets")
-
-for contestant in contestants: #Loop through contestants to tally up and find proportions for each islander
-    proportion_pos = find_proportion(contestant, pos_tweets)
-    proportion_neg = find_proportion(contestant, neg_tweets)
-    print(contestant + "," + str(proportion_pos) + "," + str(proportion_neg))
+    print("Islander, % Positive Tweets, % Negative Tweets")
+    for contestant in contestants: #Print results
+        proportion_pos = find_proportion(contestant, pos_tweets)
+        proportion_neg = find_proportion(contestant, neg_tweets)
+        print(contestant + "," + str(proportion_pos) + "," + str(proportion_neg))
+    
+main(10000) #Calling main function
